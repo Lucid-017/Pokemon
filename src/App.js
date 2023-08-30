@@ -10,7 +10,7 @@ function App() {
  
   const getInfo = async ()=>{
     const list = await getPokemonList()
-    console.log(list)
+    console.log('list',list)
     setPokemons(list)
   } 
   useEffect(()=>{getInfo()},[])

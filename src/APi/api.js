@@ -8,12 +8,12 @@ export const getPokemonList = async()=>{
 }
 // getpokemon()
 // short description of the pokemon
-export const getPokemoDescription = async()=>{
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/1`)
+export const getPokemoDescription = async(index)=>{
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
     .then(res=>res.json())
-    return data.flavor_text_entries[0].flavor_text
+    return data.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g,'')
 }
-getPokemoDescription()
+// getPokemoDescription()
 
 // return url of pokemon sprite (image)
 export function getPokenmonSpriteUrl(index){

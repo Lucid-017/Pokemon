@@ -1,17 +1,28 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Card from "./Card"
 import { getPokemoDescription } from "../APi/api"
 
 const Select =({pokemons})=>{
     const [pokenmonIndex,setPokemonIndex]=useState('1')
-    const [pokemonDescription,setPokemonDescription]=useState('')
-    // for each pokemon we click on we want to get the details
-    // const description= getPokemoDescription(pokenmonIndex)
+    const [description,setDescription]=useState('')
+
+    const getPokemonDesc = async ()=>{
+        const desc = await getPokemoDescription(pokenmonIndex)
+        console.log('desc',desc)
+        setDescription(desc)
+      } 
+    // we click options from our select and store the index
     const handleclick =(e)=>{
         setPokemonIndex(e.target.value)
-        // setPokemonDescription(description)
-        console.log(pokenmonIndex)
+        console.log('index',pokenmonIndex)
+        // and also get our description
+        getPokemonDesc()
     }
+    // when the page loads get us the description of the first pokemon
+    useEffect(()=>{
+        getPokemonDesc(pokenmonIndex)
+    },[pokenmonIndex])//change description when the value of our index changes
+
     return(
         <div>
             <select name="Select pokemon" onChange={handleclick}>
@@ -28,7 +39,7 @@ const Select =({pokemons})=>{
                     })
                 }
             </select>
-            <Card pokenmonIndex={pokenmonIndex} pokemonDescription={pokemonDescription}/>
+            <Card pokenmonIndex={pokenmonIndex} pokemonDescription={description}/>
         </div>
     )
 }

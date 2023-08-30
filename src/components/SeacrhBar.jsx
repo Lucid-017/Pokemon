@@ -27,7 +27,6 @@ const SearchBar = ()=>{
         e.preventDefault();
         search(text)
     }
-    const renderedImage= 
     return(
         <div className="container"> 
             <form>

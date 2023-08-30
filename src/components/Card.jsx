@@ -1,19 +1,19 @@
 import { useEffect } from "react"
-import { getPokemoDescription, getPokenmonSpriteUrl } from "../APi/api"
+import { getPokenmonSpriteUrl } from "../APi/api"
 
 const Card =({pokenmonIndex,pokemonDescription})=>{
-   
+  
     useEffect(()=>{
-        getPokenmonSpriteUrl()
-        getPokemoDescription(pokenmonIndex)
-   
+        getPokenmonSpriteUrl() 
     },[])
     return(
         <div>
             <div>
                 <img src={getPokenmonSpriteUrl(pokenmonIndex)}/>
             </div>
-            <div>{getPokemoDescription(pokenmonIndex)}</div>
+            <p>
+              {pokemonDescription}
+            </p>
         </div>
     )
 }
