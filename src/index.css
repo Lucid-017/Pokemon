@@ -1,0 +1,19 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.img-container{
+    border: 2px solid black;
+    
+}
+.img-container .img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    
+}
